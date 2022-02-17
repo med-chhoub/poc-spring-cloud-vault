@@ -1,0 +1,19 @@
+app:
+  usage: adv
+  env: prod
+
+spring:
+  application:
+    name: adv-sm
+  cloud:
+    vault:
+      uri: ${VAULT_ADDRESS}
+      authentication: APPROLE
+      namespace: ${VAULT_NAMESPACE}
+      app-role:
+        role: adv-sm
+        app-role-path: approle
+        role-id: ${VAULT_ROLE_ID}
+        secret-id: ${VAULT_SECRET_ID}
+      kv:
+        enabled: true
